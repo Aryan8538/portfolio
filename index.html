@@ -1,1952 +1,663 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Aryan Agarwal – Web Developer</title>
-  <meta name="description" content="Aryan Agarwal – Web Developer & CS Engineering Student. Building AI-powered full-stack applications." />
-
+  
+  <!-- SEO Meta Tags -->
+  <title>Aryan Agarwal | Full-Stack & AI Web Developer</title>
+  <meta name="description" content="Portfolio of Aryan Agarwal, a Computer Science Engineering student specializing in AI-powered full-stack web applications, React.js, and FastAPI." />
+  <meta name="keywords" content="Aryan Agarwal, Web Developer, Full-Stack, AI, FastAPI, React, Portfolio, Python, CSE, RKGIT" />
+  
+  <!-- Open Graph / Social Media -->
+  <meta property="og:title" content="Aryan Agarwal | Full-Stack & AI Web Developer" />
+  <meta property="og:description" content="Computer Science Engineering student building AI-powered full-stack applications with React, FastAPI, and PyTorch." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://portfolio-aryan8538.vercel.app/" />
+  
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Cabinet+Grotesk:wght@400;500;700;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;700;800&family=DM+Mono:wght@400;500&family=Cabinet+Grotesk:wght@400;500;700;800&display=swap" rel="stylesheet" />
 
   <!-- Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
-  <style>
-    /* ============================================================
-       CSS VARIABLES & RESET
-    ============================================================ */
-    :root {
-      --bg: #0a0a0f;
-      --bg2: #10101a;
-      --bg3: #16161f;
-      --surface: #1c1c28;
-      --surface2: #222235;
-      --border: rgba(255,255,255,0.07);
-      --accent: #7c6bff;
-      --accent2: #00e5cc;
-      --accent3: #ff6b9d;
-      --text: #f0f0f8;
-      --text2: #9898b8;
-      --text3: #5a5a7a;
-      --glow: rgba(124,107,255,0.25);
-      --glow2: rgba(0,229,204,0.15);
-      --radius: 16px;
-      --radius-sm: 8px;
-      --transition: 0.35s cubic-bezier(0.4,0,0.2,1);
-      --font-display: 'Syne', sans-serif;
-      --font-body: 'Cabinet Grotesk', sans-serif;
-      --font-mono: 'DM Mono', monospace;
-    }
-    [data-theme="light"] {
-      --bg: #f5f5f0;
-      --bg2: #ebebdf;
-      --bg3: #ffffff;
-      --surface: #ffffff;
-      --surface2: #f0f0e8;
-      --border: rgba(0,0,0,0.08);
-      --text: #0e0e1a;
-      --text2: #4a4a6a;
-      --text3: #8a8aaa;
-      --glow: rgba(124,107,255,0.15);
-      --glow2: rgba(0,229,204,0.1);
-    }
-
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; font-size: 16px; }
-    body {
-      font-family: var(--font-body);
-      background: var(--bg);
-      color: var(--text);
-      overflow-x: hidden;
-      transition: background var(--transition), color var(--transition);
-    }
-    a { color: inherit; text-decoration: none; }
-    img { max-width: 100%; display: block; }
-    ul { list-style: none; }
-    button { cursor: pointer; border: none; background: none; font-family: inherit; }
-    ::selection { background: var(--accent); color: #fff; }
-    ::-webkit-scrollbar { width: 4px; }
-    ::-webkit-scrollbar-track { background: var(--bg); }
-    ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 4px; }
-
-    /* ============================================================
-       UTILITY
-    ============================================================ */
-    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
-    .section { padding: 100px 0; }
-    .section-label {
-      font-family: var(--font-mono);
-      font-size: 0.75rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--accent2);
-      margin-bottom: 12px;
-    }
-    .section-title {
-      font-family: var(--font-display);
-      font-size: clamp(2rem, 4vw, 3rem);
-      font-weight: 800;
-      line-height: 1.1;
-      margin-bottom: 16px;
-    }
-    .section-sub {
-      color: var(--text2);
-      font-size: 1.05rem;
-      max-width: 540px;
-      line-height: 1.7;
-      margin-bottom: 56px;
-    }
-    .tag {
-      display: inline-block;
-      font-family: var(--font-mono);
-      font-size: 0.7rem;
-      padding: 4px 10px;
-      border-radius: 4px;
-      background: var(--surface2);
-      color: var(--accent2);
-      border: 1px solid var(--border);
-    }
-
-    /* ============================================================
-       ANIMATED BACKGROUND
-    ============================================================ */
-    .bg-grid {
-      position: fixed;
-      inset: 0;
-      z-index: 0;
-      pointer-events: none;
-      background-image:
-        linear-gradient(var(--border) 1px, transparent 1px),
-        linear-gradient(90deg, var(--border) 1px, transparent 1px);
-      background-size: 60px 60px;
-      mask-image: radial-gradient(ellipse 80% 80% at 50% 0%, black 40%, transparent 100%);
-      opacity: 0.5;
-    }
-    .orb {
-      position: fixed;
-      border-radius: 50%;
-      filter: blur(100px);
-      pointer-events: none;
-      z-index: 0;
-      animation: orbFloat 12s ease-in-out infinite;
-    }
-    .orb-1 {
-      width: 600px; height: 600px;
-      background: radial-gradient(circle, rgba(124,107,255,0.18) 0%, transparent 70%);
-      top: -200px; right: -100px;
-      animation-delay: 0s;
-    }
-    .orb-2 {
-      width: 500px; height: 500px;
-      background: radial-gradient(circle, rgba(0,229,204,0.12) 0%, transparent 70%);
-      bottom: 0; left: -150px;
-      animation-delay: -6s;
-    }
-    @keyframes orbFloat {
-      0%, 100% { transform: translateY(0px) scale(1); }
-      50% { transform: translateY(-40px) scale(1.05); }
-    }
-
-    /* ============================================================
-       NAVBAR
-    ============================================================ */
-    .navbar {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 1000;
-      padding: 0 24px;
-      height: 64px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      transition: background var(--transition), box-shadow var(--transition);
-    }
-    .navbar.scrolled {
-      background: rgba(10,10,15,0.85);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      box-shadow: 0 1px 0 var(--border);
-    }
-    [data-theme="light"] .navbar.scrolled {
-      background: rgba(245,245,240,0.85);
-    }
-    .nav-logo {
-      font-family: var(--font-display);
-      font-weight: 800;
-      font-size: 1.3rem;
-      letter-spacing: -0.02em;
-    }
-    .nav-logo span { color: var(--accent); }
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 32px;
-    }
-    .nav-links a {
-      font-family: var(--font-mono);
-      font-size: 0.8rem;
-      color: var(--text2);
-      transition: color var(--transition);
-      letter-spacing: 0.05em;
-    }
-    .nav-links a:hover { color: var(--text); }
-    .nav-right {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    .theme-toggle {
-      width: 38px; height: 38px;
-      border-radius: 50%;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--text2);
-      transition: all var(--transition);
-      font-size: 0.85rem;
-    }
-    .theme-toggle:hover { color: var(--accent); border-color: var(--accent); }
-    .btn-hire {
-      padding: 8px 20px;
-      border-radius: 8px;
-      background: var(--accent);
-      color: #fff;
-      font-family: var(--font-mono);
-      font-size: 0.78rem;
-      letter-spacing: 0.04em;
-      transition: all var(--transition);
-      box-shadow: 0 0 0 0 var(--glow);
-    }
-    .btn-hire:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 8px 24px var(--glow);
-    }
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      width: 28px;
-      padding: 4px 0;
-      background: none;
-    }
-    .hamburger span {
-      display: block;
-      height: 2px;
-      background: var(--text);
-      border-radius: 2px;
-      transition: all var(--transition);
-    }
-    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-    .hamburger.open span:nth-child(2) { opacity: 0; }
-    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-    .mobile-menu {
-      display: none;
-      position: fixed;
-      inset: 0;
-      z-index: 999;
-      background: var(--bg);
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 36px;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.3s;
-    }
-    .mobile-menu.open { opacity: 1; pointer-events: all; display: flex; }
-    .mobile-menu a {
-      font-family: var(--font-display);
-      font-size: 2.5rem;
-      font-weight: 700;
-      color: var(--text2);
-      transition: color var(--transition);
-    }
-    .mobile-menu a:hover { color: var(--accent); }
-
-    /* ============================================================
-       HERO
-    ============================================================ */
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      padding-top: 64px;
-      position: relative;
-      z-index: 1;
-    }
-    .hero-inner {
-      width: 100%;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 24px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      align-items: center;
-    }
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 100px;
-      padding: 6px 14px;
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      color: var(--text2);
-      margin-bottom: 24px;
-      letter-spacing: 0.05em;
-    }
-    .hero-badge .dot {
-      width: 6px; height: 6px;
-      border-radius: 50%;
-      background: var(--accent2);
-      animation: pulse 2s infinite;
-    }
-    @keyframes pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.5; transform: scale(0.7); }
-    }
-    .hero-name {
-      font-family: var(--font-display);
-      font-size: clamp(3rem, 7vw, 5.5rem);
-      font-weight: 800;
-      line-height: 1;
-      letter-spacing: -0.03em;
-      margin-bottom: 12px;
-    }
-    .hero-name .line2 { color: var(--accent); }
-    .hero-role {
-      font-family: var(--font-mono);
-      font-size: 1.1rem;
-      color: var(--text2);
-      margin-bottom: 24px;
-      min-height: 1.5em;
-    }
-    .hero-role .typed-cursor {
-      display: inline-block;
-      width: 2px;
-      height: 1em;
-      background: var(--accent);
-      margin-left: 2px;
-      animation: blink 1s infinite;
-      vertical-align: text-bottom;
-    }
-    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
-    .hero-desc {
-      color: var(--text2);
-      font-size: 1.05rem;
-      line-height: 1.75;
-      max-width: 480px;
-      margin-bottom: 36px;
-    }
-    .hero-cta {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-    }
-    .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 14px 28px;
-      background: var(--accent);
-      color: #fff;
-      border-radius: 10px;
-      font-weight: 600;
-      font-size: 0.95rem;
-      transition: all var(--transition);
-      box-shadow: 0 0 0 0 var(--glow);
-    }
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 12px 32px var(--glow);
-    }
-    .btn-secondary {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 14px 28px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      color: var(--text);
-      border-radius: 10px;
-      font-weight: 600;
-      font-size: 0.95rem;
-      transition: all var(--transition);
-    }
-    .btn-secondary:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-      transform: translateY(-2px);
-    }
-    .hero-stats {
-      display: flex;
-      gap: 36px;
-      margin-top: 48px;
-    }
-    .hero-stat-num {
-      font-family: var(--font-display);
-      font-size: 2rem;
-      font-weight: 800;
-      color: var(--accent);
-    }
-    .hero-stat-label {
-      font-size: 0.82rem;
-      color: var(--text3);
-      font-family: var(--font-mono);
-      letter-spacing: 0.04em;
-    }
-    /* Hero Visual */
-    .hero-visual {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      position: relative;
-    }
-    .hero-card {
-      width: 320px; height: 380px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 24px;
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      box-shadow: 0 40px 80px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.05);
-    }
-    .hero-card::before {
-      content: '';
-      position: absolute;
-      top: -50%; left: -50%;
-      width: 200%; height: 200%;
-      background: conic-gradient(from 0deg, transparent 0%, var(--accent) 10%, transparent 20%, transparent 80%, var(--accent2) 90%, transparent 100%);
-      animation: spin 6s linear infinite;
-      opacity: 0.15;
-    }
-    @keyframes spin { to { transform: rotate(360deg); } }
-    .hero-card::after {
-      content: '';
-      position: absolute;
-      inset: 1px;
-      background: var(--surface);
-      border-radius: 23px;
-    }
-    .hero-avatar {
-      width: 90px; height: 90px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: var(--font-display);
-      font-size: 2.2rem;
-      font-weight: 800;
-      color: #fff;
-      z-index: 1;
-      margin-bottom: 16px;
-      position: relative;
-    }
-    .hero-card-name {
-      font-family: var(--font-display);
-      font-weight: 700;
-      font-size: 1.3rem;
-      z-index: 1;
-      position: relative;
-    }
-    .hero-card-role-text {
-      font-family: var(--font-mono);
-      font-size: 0.78rem;
-      color: var(--accent2);
-      z-index: 1;
-      position: relative;
-      margin-bottom: 20px;
-    }
-    .hero-card-chips {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      justify-content: center;
-      z-index: 1;
-      position: relative;
-      max-width: 260px;
-    }
-    .hero-card-chip {
-      font-family: var(--font-mono);
-      font-size: 0.65rem;
-      padding: 3px 8px;
-      background: var(--surface2);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      color: var(--text2);
-    }
-    .float-badge {
-      position: absolute;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 10px 14px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.3);
-      z-index: 2;
-      animation: floatBadge 4s ease-in-out infinite;
-    }
-    .float-badge-1 { top: 10px; right: -20px; animation-delay: 0s; }
-    .float-badge-2 { bottom: 60px; left: -30px; animation-delay: -2s; }
-    @keyframes floatBadge {
-      0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)}
-    }
-    .float-badge-icon { font-size: 1.2rem; }
-    .float-badge-text {
-      font-family: var(--font-mono);
-      font-size: 0.7rem;
-      color: var(--text2);
-      margin-top: 2px;
-    }
-    .float-badge-val {
-      font-family: var(--font-display);
-      font-size: 0.9rem;
-      font-weight: 700;
-      color: var(--accent2);
-    }
-
-    /* ============================================================
-       ABOUT
-    ============================================================ */
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      align-items: start;
-    }
-    .about-text p {
-      color: var(--text2);
-      line-height: 1.8;
-      margin-bottom: 16px;
-      font-size: 1rem;
-    }
-    .about-interests {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 24px;
-    }
-    .interest-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 6px 14px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      font-size: 0.85rem;
-      color: var(--text2);
-      transition: all var(--transition);
-    }
-    .interest-tag:hover { border-color: var(--accent); color: var(--accent); }
-    .about-cards { display: flex; flex-direction: column; gap: 16px; }
-    .about-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 24px;
-      transition: border-color var(--transition), transform var(--transition);
-    }
-    .about-card:hover { border-color: var(--accent); transform: translateX(4px); }
-    .about-card-icon {
-      width: 40px; height: 40px;
-      border-radius: 10px;
-      background: var(--surface2);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1rem;
-      color: var(--accent);
-      margin-bottom: 12px;
-    }
-    .about-card h4 {
-      font-family: var(--font-display);
-      font-weight: 700;
-      margin-bottom: 6px;
-    }
-    .about-card p {
-      font-size: 0.875rem;
-      color: var(--text2);
-      line-height: 1.6;
-    }
-
-    /* ============================================================
-       SKILLS
-    ============================================================ */
-    .skills-section { background: var(--bg2); }
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
-    }
-    .skill-category {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 28px;
-      transition: border-color var(--transition), box-shadow var(--transition);
-    }
-    .skill-category:hover {
-      border-color: var(--accent);
-      box-shadow: 0 0 30px var(--glow);
-    }
-    .skill-cat-header {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 20px;
-    }
-    .skill-cat-icon {
-      width: 36px; height: 36px;
-      border-radius: 8px;
-      background: var(--surface2);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.9rem;
-      color: var(--accent);
-    }
-    .skill-cat-name {
-      font-family: var(--font-display);
-      font-weight: 700;
-      font-size: 0.95rem;
-    }
-    .skill-item { margin-bottom: 14px; }
-    .skill-item:last-child { margin-bottom: 0; }
-    .skill-info {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 6px;
-    }
-    .skill-name { font-size: 0.85rem; color: var(--text2); }
-    .skill-pct {
-      font-family: var(--font-mono);
-      font-size: 0.75rem;
-      color: var(--accent2);
-    }
-    .skill-bar {
-      height: 4px;
-      background: var(--surface2);
-      border-radius: 2px;
-      overflow: hidden;
-    }
-    .skill-bar-fill {
-      height: 100%;
-      background: linear-gradient(90deg, var(--accent), var(--accent2));
-      border-radius: 2px;
-      width: 0%;
-      transition: width 1.2s cubic-bezier(0.4,0,0.2,1);
-    }
-    /* Tech Icons Row */
-    .tech-icons-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 48px;
-      justify-content: center;
-    }
-    .tech-icon-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 6px;
-      padding: 16px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      min-width: 80px;
-      transition: all var(--transition);
-      cursor: default;
-    }
-    .tech-icon-item:hover {
-      border-color: var(--accent2);
-      transform: translateY(-4px);
-      box-shadow: 0 8px 24px var(--glow2);
-    }
-    .tech-icon-item i {
-      font-size: 1.6rem;
-      color: var(--accent2);
-    }
-    .tech-icon-item span {
-      font-family: var(--font-mono);
-      font-size: 0.65rem;
-      color: var(--text3);
-      letter-spacing: 0.03em;
-    }
-
-    /* ============================================================
-       PROJECTS
-    ============================================================ */
-    .project-filters {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      margin-bottom: 40px;
-    }
-    .filter-btn {
-      padding: 7px 18px;
-      border-radius: 8px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      color: var(--text2);
-      font-family: var(--font-mono);
-      font-size: 0.78rem;
-      transition: all var(--transition);
-      letter-spacing: 0.05em;
-    }
-    .filter-btn.active, .filter-btn:hover {
-      background: var(--accent);
-      border-color: var(--accent);
-      color: #fff;
-    }
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-      gap: 24px;
-    }
-    .project-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 32px;
-      display: flex;
-      flex-direction: column;
-      transition: all var(--transition);
-      position: relative;
-      overflow: hidden;
-    }
-    .project-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 2px;
-      background: linear-gradient(90deg, var(--accent), var(--accent2));
-      transform: scaleX(0);
-      transition: transform var(--transition);
-    }
-    .project-card:hover::before { transform: scaleX(1); }
-    .project-card:hover {
-      border-color: rgba(124,107,255,0.3);
-      transform: translateY(-6px);
-      box-shadow: 0 20px 60px rgba(0,0,0,0.25), 0 0 40px var(--glow);
-    }
-    .project-number {
-      font-family: var(--font-mono);
-      font-size: 0.7rem;
-      color: var(--text3);
-      margin-bottom: 16px;
-      letter-spacing: 0.1em;
-    }
-    .project-emoji {
-      font-size: 2.5rem;
-      margin-bottom: 16px;
-    }
-    .project-title {
-      font-family: var(--font-display);
-      font-size: 1.25rem;
-      font-weight: 700;
-      margin-bottom: 12px;
-      line-height: 1.3;
-    }
-    .project-desc {
-      color: var(--text2);
-      font-size: 0.9rem;
-      line-height: 1.7;
-      flex: 1;
-      margin-bottom: 20px;
-    }
-    .project-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-bottom: 24px;
-    }
-    .project-links {
-      display: flex;
-      gap: 10px;
-    }
-    .project-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 8px 16px;
-      border-radius: 8px;
-      background: var(--surface2);
-      border: 1px solid var(--border);
-      font-family: var(--font-mono);
-      font-size: 0.76rem;
-      color: var(--text2);
-      transition: all var(--transition);
-      letter-spacing: 0.03em;
-    }
-    .project-link:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-    }
-    .project-link.primary {
-      background: var(--accent);
-      border-color: var(--accent);
-      color: #fff;
-    }
-    .project-link.primary:hover {
-      background: transparent;
-      color: var(--accent);
-    }
-
-    /* ============================================================
-       EXPERIENCE / TIMELINE
-    ============================================================ */
-    .timeline-exp { background: var(--bg2); }
-    .timeline-inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-    }
-    .timeline-col-title {
-      font-family: var(--font-display);
-      font-size: 1.3rem;
-      font-weight: 700;
-      margin-bottom: 28px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .timeline-col-title i { color: var(--accent); font-size: 1rem; }
-    .timeline {
-      position: relative;
-      padding-left: 28px;
-    }
-    .timeline::before {
-      content: '';
-      position: absolute;
-      left: 0; top: 8px; bottom: 0;
-      width: 1px;
-      background: linear-gradient(to bottom, var(--accent), transparent);
-    }
-    .timeline-item {
-      position: relative;
-      margin-bottom: 36px;
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.6s, transform 0.6s;
-    }
-    .timeline-item.visible { opacity: 1; transform: translateY(0); }
-    .timeline-item::before {
-      content: '';
-      position: absolute;
-      left: -32px; top: 6px;
-      width: 9px; height: 9px;
-      border-radius: 50%;
-      background: var(--accent);
-      box-shadow: 0 0 0 3px var(--glow);
-    }
-    .timeline-date {
-      font-family: var(--font-mono);
-      font-size: 0.7rem;
-      color: var(--accent2);
-      letter-spacing: 0.08em;
-      margin-bottom: 6px;
-    }
-    .timeline-title {
-      font-family: var(--font-display);
-      font-weight: 700;
-      font-size: 1rem;
-      margin-bottom: 4px;
-    }
-    .timeline-org {
-      font-size: 0.85rem;
-      color: var(--text3);
-      margin-bottom: 10px;
-      font-family: var(--font-mono);
-    }
-    .timeline-desc {
-      font-size: 0.875rem;
-      color: var(--text2);
-      line-height: 1.7;
-    }
-    .timeline-desc li {
-      position: relative;
-      padding-left: 14px;
-      margin-bottom: 4px;
-    }
-    .timeline-desc li::before {
-      content: '▹';
-      position: absolute;
-      left: 0;
-      color: var(--accent2);
-      font-size: 0.7rem;
-      top: 2px;
-    }
-
-    /* ============================================================
-       CERTIFICATIONS & AWARDS
-    ============================================================ */
-    .certs-awards-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
-    }
-    .cert-item {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 20px;
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      transition: all var(--transition);
-    }
-    .cert-item:hover {
-      border-color: var(--accent);
-      transform: translateX(4px);
-    }
-    .cert-icon {
-      width: 44px; height: 44px;
-      flex-shrink: 0;
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.1rem;
-    }
-    .cert-icon.blue { background: rgba(0,150,255,0.15); color: #4da6ff; }
-    .cert-icon.green { background: rgba(0,229,100,0.12); color: #00e564; }
-    .cert-icon.orange { background: rgba(255,150,0,0.12); color: #ff9600; }
-    .cert-icon.purple { background: rgba(124,107,255,0.15); color: var(--accent); }
-    .cert-icon.gold { background: rgba(255,215,0,0.12); color: #ffd700; }
-    .cert-name {
-      font-weight: 600;
-      font-size: 0.9rem;
-      margin-bottom: 2px;
-    }
-    .cert-org {
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      color: var(--text3);
-    }
-    .award-banner {
-      background: linear-gradient(135deg, var(--surface) 0%, var(--surface2) 100%);
-      border: 1px solid rgba(255,215,0,0.3);
-      border-radius: var(--radius);
-      padding: 32px;
-      display: flex;
-      align-items: center;
-      gap: 24px;
-      margin-top: 24px;
-      transition: all var(--transition);
-    }
-    .award-banner:hover { box-shadow: 0 0 40px rgba(255,215,0,0.1); }
-    .award-trophy {
-      font-size: 3.5rem;
-      animation: trophyBounce 2s ease-in-out infinite;
-    }
-    @keyframes trophyBounce {
-      0%,100%{transform:translateY(0) rotate(-5deg)} 50%{transform:translateY(-8px) rotate(5deg)}
-    }
-    .award-title {
-      font-family: var(--font-display);
-      font-size: 1.1rem;
-      font-weight: 700;
-      margin-bottom: 6px;
-      color: #ffd700;
-    }
-    .award-desc { font-size: 0.9rem; color: var(--text2); line-height: 1.6; }
-
-    /* ============================================================
-       CONTACT
-    ============================================================ */
-    .contact-section { background: var(--bg2); }
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 1fr 1.4fr;
-      gap: 60px;
-      align-items: start;
-    }
-    .contact-info h3 {
-      font-family: var(--font-display);
-      font-size: 1.5rem;
-      font-weight: 700;
-      margin-bottom: 16px;
-    }
-    .contact-info p {
-      color: var(--text2);
-      font-size: 0.95rem;
-      line-height: 1.75;
-      margin-bottom: 32px;
-    }
-    .contact-links { display: flex; flex-direction: column; gap: 12px; }
-    .contact-link {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      padding: 16px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      transition: all var(--transition);
-    }
-    .contact-link:hover {
-      border-color: var(--accent);
-      transform: translateX(4px);
-    }
-    .contact-link-icon {
-      width: 40px; height: 40px;
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1rem;
-    }
-    .contact-link-icon.email { background: rgba(255,107,157,0.15); color: var(--accent3); }
-    .contact-link-icon.phone { background: rgba(0,229,204,0.12); color: var(--accent2); }
-    .contact-link-icon.linkedin { background: rgba(0,120,210,0.15); color: #4da6ff; }
-    .contact-link-icon.github { background: rgba(255,255,255,0.07); color: var(--text); }
-    .contact-link-text {
-      font-size: 0.85rem;
-      color: var(--text2);
-    }
-    .contact-link-label {
-      font-family: var(--font-mono);
-      font-size: 0.7rem;
-      color: var(--text3);
-    }
-    /* Form */
-    .contact-form {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 36px;
-    }
-    .form-group { margin-bottom: 20px; }
-    .form-label {
-      display: block;
-      font-family: var(--font-mono);
-      font-size: 0.75rem;
-      color: var(--text2);
-      letter-spacing: 0.06em;
-      margin-bottom: 8px;
-    }
-    .form-input, .form-textarea {
-      width: 100%;
-      background: var(--bg2);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 13px 16px;
-      color: var(--text);
-      font-family: var(--font-body);
-      font-size: 0.92rem;
-      outline: none;
-      transition: border-color var(--transition), box-shadow var(--transition);
-    }
-    .form-input:focus, .form-textarea:focus {
-      border-color: var(--accent);
-      box-shadow: 0 0 0 3px var(--glow);
-    }
-    .form-textarea { min-height: 130px; resize: vertical; }
-    .form-error {
-      font-family: var(--font-mono);
-      font-size: 0.7rem;
-      color: var(--accent3);
-      margin-top: 5px;
-      display: none;
-    }
-    .form-group.error .form-error { display: block; }
-    .form-group.error .form-input,
-    .form-group.error .form-textarea { border-color: var(--accent3); }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-    .btn-submit {
-      width: 100%;
-      padding: 14px;
-      background: linear-gradient(135deg, var(--accent), #9c8dff);
-      color: #fff;
-      border: none;
-      border-radius: 10px;
-      font-family: var(--font-body);
-      font-size: 0.95rem;
-      font-weight: 600;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      transition: all var(--transition);
-      box-shadow: 0 4px 20px var(--glow);
-    }
-    .btn-submit:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 12px 32px var(--glow);
-    }
-    .btn-submit:active { transform: translateY(0); }
-    .form-success {
-      display: none;
-      text-align: center;
-      padding: 20px;
-    }
-    .form-success i { font-size: 2.5rem; color: var(--accent2); margin-bottom: 10px; }
-    .form-success p { color: var(--text2); font-size: 0.95rem; }
-
-    /* ============================================================
-       FOOTER
-    ============================================================ */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 40px 24px;
-      text-align: center;
-    }
-    .footer-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 20px;
-    }
-    .footer-logo {
-      font-family: var(--font-display);
-      font-weight: 800;
-      font-size: 1.1rem;
-    }
-    .footer-logo span { color: var(--accent); }
-    .footer-copy {
-      font-family: var(--font-mono);
-      font-size: 0.75rem;
-      color: var(--text3);
-    }
-    .footer-socials { display: flex; gap: 12px; }
-    .footer-social {
-      width: 36px; height: 36px;
-      border-radius: 8px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--text2);
-      font-size: 0.9rem;
-      transition: all var(--transition);
-    }
-    .footer-social:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-      transform: translateY(-2px);
-    }
-
-    /* ============================================================
-       SCROLL REVEAL
-    ============================================================ */
-    .reveal {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-    .reveal-left { opacity: 0; transform: translateX(-30px); transition: opacity 0.7s, transform 0.7s; }
-    .reveal-left.visible { opacity: 1; transform: translateX(0); }
-    .reveal-right { opacity: 0; transform: translateX(30px); transition: opacity 0.7s, transform 0.7s; }
-    .reveal-right.visible { opacity: 1; transform: translateX(0); }
-
-    /* ============================================================
-       RESPONSIVE
-    ============================================================ */
-    @media (max-width: 900px) {
-      .hero-inner { grid-template-columns: 1fr; text-align: center; }
-      .hero-desc { max-width: 100%; }
-      .hero-cta { justify-content: center; }
-      .hero-stats { justify-content: center; }
-      .hero-visual { margin-top: 40px; }
-      .float-badge-1 { right: 0; }
-      .float-badge-2 { left: 0; }
-      .about-grid, .timeline-inner, .contact-grid, .certs-awards-grid { grid-template-columns: 1fr; }
-      .form-row { grid-template-columns: 1fr; }
-      .nav-links { display: none; }
-      .hamburger { display: flex; }
-      .btn-hire { display: none; }
-    }
-    @media (max-width: 600px) {
-      .section { padding: 60px 0; }
-      .projects-grid { grid-template-columns: 1fr; }
-      .hero-card { width: 260px; height: 320px; }
-      .footer-inner { flex-direction: column; text-align: center; }
-    }
-
-    /* ============================================================
-       BACK TO TOP
-    ============================================================ */
-    .back-top {
-      position: fixed;
-      bottom: 28px;
-      right: 28px;
-      width: 42px; height: 42px;
-      border-radius: 10px;
-      background: var(--accent);
-      color: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.9rem;
-      z-index: 100;
-      opacity: 0;
-      pointer-events: none;
-      transition: all var(--transition);
-      box-shadow: 0 4px 20px var(--glow);
-    }
-    .back-top.show { opacity: 1; pointer-events: all; }
-    .back-top:hover { transform: translateY(-3px); }
-
-    /* ============================================================
-       ACTIVE NAV
-    ============================================================ */
-    .nav-links a.active { color: var(--accent); }
-  </style>
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
 
-  <!-- Background -->
+  <!-- Background Grids & Orbs -->
   <div class="bg-grid"></div>
   <div class="orb orb-1"></div>
   <div class="orb orb-2"></div>
 
-  <!-- Mobile Menu -->
-  <div class="mobile-menu" id="mobileMenu">
+  <!-- Fullscreen Mobile Navigation Menu -->
+  <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile Navigation">
     <a href="#hero" class="mobile-link">Home</a>
     <a href="#about" class="mobile-link">About</a>
     <a href="#skills" class="mobile-link">Skills</a>
     <a href="#projects" class="mobile-link">Projects</a>
     <a href="#experience" class="mobile-link">Experience</a>
     <a href="#contact" class="mobile-link">Contact</a>
-  </div>
-
-  <!-- Navbar -->
-  <nav class="navbar" id="navbar">
-    <div class="nav-logo">Aryan<span>.</span></div>
-    <ul class="nav-links">
-      <li><a href="#hero">Home</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-    <div class="nav-right">
-      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-        <i class="fas fa-moon"></i>
-      </button>
-      <a href="mailto:33iot2324@rkgit.edu.in" class="btn-hire">Hire Me</a>
-      <button class="hamburger" id="hamburger" aria-label="Menu">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
   </nav>
 
-  <!-- ============================================================ HERO -->
-  <section class="hero" id="hero">
-    <div class="hero-inner">
-      <div class="hero-content">
-        <div class="hero-badge">
-          <span class="dot"></span>
-          Available for opportunities
+  <!-- Navbar -->
+  <header>
+    <nav class="navbar" id="navbar" aria-label="Main Navigation">
+      <a href="#hero" class="nav-logo" id="navLogo">Aryan<span>.</span></a>
+      <ul class="nav-links">
+        <li><a href="#hero" class="active">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#experience">Journey</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="nav-right">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark and light theme">
+          <i class="fas fa-moon"></i>
+        </button>
+        <a href="mailto:33iot2324@rkgit.edu.in" class="btn-hire">Hire Me</a>
+        <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+      <div class="container">
+        <div class="hero-inner">
+          <div class="hero-content reveal-left">
+            <div class="hero-badge">
+              <span class="dot"></span>
+              Available for opportunities & internships
+            </div>
+            <h1 class="hero-name">
+              Hi, I'm <br>
+              <span class="line2">Aryan Agarwal</span>
+            </h1>
+            <div class="hero-role" aria-live="polite">
+              &lt;&nbsp;<span id="typed-text"></span>&nbsp;/&gt;
+            </div>
+            <p class="hero-desc">
+              B.Tech CS Engineering student building AI-integrated, full-stack web applications. I design high-performance frontends backed by robust, scalable APIs.
+            </p>
+            <div class="hero-cta">
+              <a href="#projects" class="btn-primary">
+                <i class="fas fa-rocket"></i> View Projects
+              </a>
+              <a href="assets/Aryan_Agarwal.pdf" download="Aryan_Agarwal_Resume.pdf" class="btn-secondary">
+                <i class="fas fa-download"></i> Resume
+              </a>
+            </div>
+            <div class="hero-stats">
+              <div>
+                <div class="hero-stat-num">3+</div>
+                <div class="hero-stat-label">Projects Built</div>
+              </div>
+              <div>
+                <div class="hero-stat-num">Top 20</div>
+                <div class="hero-stat-label">National Rank</div>
+              </div>
+              <div>
+                <div class="hero-stat-num">7.9</div>
+                <div class="hero-stat-label">Current CGPA</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hero Visual Developer Card -->
+          <div class="hero-visual reveal-right">
+            <div class="hero-card">
+              <div class="hero-avatar">AA</div>
+              <div class="hero-card-name">Aryan Agarwal</div>
+              <div class="hero-card-role-text">AI Web Developer & CS Student</div>
+              <div class="hero-card-chips">
+                <span class="hero-card-chip">React.js</span>
+                <span class="hero-card-chip">FastAPI</span>
+                <span class="hero-card-chip">Python</span>
+                <span class="hero-card-chip">Node.js</span>
+                <span class="hero-card-chip">PyTorch</span>
+                <span class="hero-card-chip">JavaScript</span>
+              </div>
+            </div>
+            <div class="float-badge float-badge-1">
+              <div class="float-badge-icon">🏆</div>
+              <div class="float-badge-text">Hackathon</div>
+              <div class="float-badge-val">Top 20</div>
+            </div>
+            <div class="float-badge float-badge-2">
+              <div class="float-badge-icon">🤖</div>
+              <div class="float-badge-text">AI Projects</div>
+              <div class="float-badge-val">3 Built</div>
+            </div>
+          </div>
         </div>
-        <h1 class="hero-name">
-          Hi, I'm<br>
-          <span class="line2">Aryan Agarwal</span>
-        </h1>
-        <div class="hero-role">
-          &lt; <span id="typed-text"></span><span class="typed-cursor"></span> /&gt;
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+      <div class="container">
+        <div class="about-grid">
+          <div class="about-text reveal-left">
+            <div class="section-label">About Me</div>
+            <h2 class="section-title">Architecting smart interfaces.</h2>
+            <p>
+              I'm a B.Tech Computer Science (IoT) student at RKGIT, Ghaziabad, driven by a deep fascination with connecting intelligence and interface. I build tools that pair clean frontends with solid backend APIs.
+            </p>
+            <p>
+              From training Convolutional Neural Networks for human emotion tracking, to deploying secure finance tracking modules — I structure code to be clean, responsive, and performant.
+            </p>
+            <p>
+              I was a finalist (Top 20 out of 500+ participants) at the Next Gen Hack National Hackathon in 2025. I actively study full-stack development, machine learning, and data structures.
+            </p>
+            <div class="about-interests">
+              <span class="interest-tag"><i class="fas fa-brain"></i> AI / ML</span>
+              <span class="interest-tag"><i class="fas fa-code"></i> Full-Stack Dev</span>
+              <span class="interest-tag"><i class="fas fa-chart-line"></i> Data Analytics</span>
+              <span class="interest-tag"><i class="fas fa-microchip"></i> IoT Systems</span>
+            </div>
+          </div>
+          <div class="about-cards reveal-right">
+            <div class="about-card">
+              <div class="about-card-icon"><i class="fas fa-graduation-cap"></i></div>
+              <div class="about-card-content">
+                <h4>Education Background</h4>
+                <p>B.Tech in Computer Science & Engineering (IoT) at RKGIT, expected graduation 2027. Current CGPA: 7.9/10.0</p>
+              </div>
+            </div>
+            <div class="about-card">
+              <div class="about-card-icon"><i class="fas fa-layer-group"></i></div>
+              <div class="about-card-content">
+                <h4>Full-Stack Ecosystem</h4>
+                <p>Developing frontends using React.js and TypeScript, with backends powered by FastAPI, Node.js, and MySQL database designs.</p>
+              </div>
+            </div>
+            <div class="about-card">
+              <div class="about-card-icon"><i class="fas fa-robot"></i></div>
+              <div class="about-card-content">
+                <h4>AI & Machine Learning</h4>
+                <p>Integrating computer vision and transformer LLM APIs using OpenCV, PyTorch models, and high-speed inferences with Groq.</p>
+              </div>
+            </div>
+          </div>
         </div>
-        <p class="hero-desc">
-          CS Engineering student building AI-powered full-stack applications. 
-          Passionate about creating performant, user-focused web experiences with modern technologies.
-        </p>
-        <div class="hero-cta">
-          <a href="#projects" class="btn-primary">
-            <i class="fas fa-rocket"></i> View Projects
-          </a>
-          <a href="#contact" class="btn-secondary">
-            <i class="fas fa-paper-plane"></i> Get in Touch
-          </a>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="section skills-section" id="skills">
+      <div class="container">
+        <div class="reveal">
+          <div class="section-label">Technical Stack</div>
+          <h2 class="section-title">Expertise & Technologies</h2>
+          <p class="section-sub">A curated set of technologies I use to build robust and performant software.</p>
         </div>
-        <div class="hero-stats">
+        <div class="skills-grid reveal">
+          <!-- Frontend -->
+          <div class="skill-category">
+            <div class="skill-cat-header">
+              <div class="skill-cat-icon"><i class="fas fa-palette"></i></div>
+              <h3 class="skill-cat-name">Frontend</h3>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info"><span class="skill-name">React.js</span><span class="skill-pct">82%</span></div>
+              <div class="skill-bar"><div class="skill-bar-fill" data-width="82"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info"><span class="skill-name">JavaScript (ES6+)</span><span class="skill-pct">85%</span></div>
+              <div class="skill-bar"><div class="skill-bar-fill" data-width="85"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info"><span class="skill-name">HTML5 & CSS3</span><span class="skill-pct">90%</span></div>
+              <div class="skill-bar"><div class="skill-bar-fill" data-width="90"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info"><span class="skill-name">Responsive Design</span><span class="skill-pct">88%</span></div>
+              <div class="skill-bar"><div class="skill-bar-fill" data-width="88"></div></div>
+            </div>
+          </div>
+
+          <!-- Backend & APIs -->
+          <div class="skill-category">
+            <div class="skill-cat-header">
+              <div class="skill-cat-icon"><i class="fas fa-server"></i></div>
+              <h3 class="skill-cat-name">Backend & APIs</h3>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info"><span class="skill-name">Python</span><span class="skill-pct">88%</span></div>
+              <div class="skill-bar"><div class="skill-bar-fill" data-width="88"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info"><span class="skill-name">FastAPI</span><span class="skill-pct">80%</span></div>
+              <div class="skill-bar"><div class="skill-bar-fill" data-width="80"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info"><span class="skill-name">REST APIs</span><span class="skill-pct">82%</span></div>
+              <div class="skill-bar"><div class="skill-bar-fill" data-width="82"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info"><span class="skill-name">MySQL / SQL</span><span class="skill-pct">72%</span></div>
+              <div class="skill-bar"><div class="skill-bar-fill" data-width="72"></div></div>
+            </div>
+          </div>
+
+          <!-- AI/ML Libraries -->
+          <div class="skill-category">
+            <div class="skill-cat-header">
+              <div class="skill-cat-icon"><i class="fas fa-brain"></i></div>
+              <h3 class="skill-cat-name">AI / ML Libraries</h3>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info"><span class="skill-name">PyTorch / CNNs</span><span class="skill-pct">74%</span></div>
+              <div class="skill-bar"><div class="skill-bar-fill" data-width="74"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info"><span class="skill-name">OpenCV</span><span class="skill-pct">76%</span></div>
+              <div class="skill-bar"><div class="skill-bar-fill" data-width="76"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info"><span class="skill-name">Pandas & NumPy</span><span class="skill-pct">80%</span></div>
+              <div class="skill-bar"><div class="skill-bar-fill" data-width="80"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info"><span class="skill-name">Streamlit / Plotly</span><span class="skill-pct">78%</span></div>
+              <div class="skill-bar"><div class="skill-bar-fill" data-width="78"></div></div>
+            </div>
+          </div>
+
+          <!-- Tools & Concepts -->
+          <div class="skill-category">
+            <div class="skill-cat-header">
+              <div class="skill-cat-icon"><i class="fas fa-tools"></i></div>
+              <h3 class="skill-cat-name">Tools & Core</h3>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info"><span class="skill-name">Git & GitHub</span><span class="skill-pct">85%</span></div>
+              <div class="skill-bar"><div class="skill-bar-fill" data-width="85"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info"><span class="skill-name">C / C++</span><span class="skill-pct">78%</span></div>
+              <div class="skill-bar"><div class="skill-bar-fill" data-width="78"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info"><span class="skill-name">Data Structures</span><span class="skill-pct">72%</span></div>
+              <div class="skill-bar"><div class="skill-bar-fill" data-width="72"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info"><span class="skill-name">OOP / DBMS / OS</span><span class="skill-pct">80%</span></div>
+              <div class="skill-bar"><div class="skill-bar-fill" data-width="80"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tech Icons Row -->
+        <div class="tech-icons-row reveal">
+          <div class="tech-icon-item" aria-label="React"><i class="fab fa-react"></i><span>React</span></div>
+          <div class="tech-icon-item" aria-label="Python"><i class="fab fa-python"></i><span>Python</span></div>
+          <div class="tech-icon-item" aria-label="JavaScript"><i class="fab fa-js"></i><span>JS</span></div>
+          <div class="tech-icon-item" aria-label="HTML5"><i class="fab fa-html5"></i><span>HTML5</span></div>
+          <div class="tech-icon-item" aria-label="CSS3"><i class="fab fa-css3-alt"></i><span>CSS3</span></div>
+          <div class="tech-icon-item" aria-label="Git"><i class="fab fa-git-alt"></i><span>Git</span></div>
+          <div class="tech-icon-item" aria-label="GitHub"><i class="fab fa-github"></i><span>GitHub</span></div>
+          <div class="tech-icon-item" aria-label="MySQL"><i class="fas fa-database"></i><span>MySQL</span></div>
+          <div class="tech-icon-item" aria-label="FastAPI"><i class="fas fa-bolt"></i><span>FastAPI</span></div>
+          <div class="tech-icon-item" aria-label="OpenCV"><i class="fas fa-eye"></i><span>OpenCV</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="section" id="projects">
+      <div class="container">
+        <div class="reveal">
+          <div class="section-label">Projects</div>
+          <h2 class="section-title">Selected Works</h2>
+          <p class="section-sub">A curated list of applications I've designed, developed, and deployed to solve real problems.</p>
+        </div>
+        <div class="project-filters reveal">
+          <button class="filter-btn active" data-filter="all">All Projects</button>
+          <button class="filter-btn" data-filter="ai">AI / ML</button>
+          <button class="filter-btn" data-filter="fullstack">Full-Stack</button>
+          <button class="filter-btn" data-filter="python">Python</button>
+        </div>
+        
+        <div class="projects-grid" id="projectsGrid">
+
+          <!-- Project 1: FinSight AI -->
+          <article class="project-card reveal" data-category="ai fullstack">
+            <div class="project-number">01 / Featured</div>
+            <div class="project-emoji" aria-hidden="true">💹</div>
+            <h3 class="project-title">FinSight AI – Student Financial Advisor</h3>
+            <p class="project-desc">
+              An AI-powered financial advisor platform targeted at student financial literacy. Includes stock tracking, portfolio allocation metrics, modular financial courses, and an AI chat assistant delivering personalized advice.
+            </p>
+            <div class="project-tags">
+              <span class="tag">React.js</span>
+              <span class="tag">FastAPI</span>
+              <span class="tag">Groq API</span>
+              <span class="tag">Uvicorn</span>
+              <span class="tag">AI Chatbot</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/Aryan8538/FinSight-AI" target="_blank" class="project-link" aria-label="View Code for FinSight AI on GitHub">
+                <i class="fab fa-github"></i> Code
+              </a>
+              <a href="https://fin-sight-ai-black.vercel.app/" target="_blank" class="project-link primary" aria-label="View Live Demo of FinSight AI">
+                <i class="fas fa-external-link-alt"></i> Live Demo
+              </a>
+            </div>
+          </article>
+
+          <!-- Project 2: Mood Snap -->
+          <article class="project-card reveal" data-category="ai python">
+            <div class="project-number">02 / AI & Vision</div>
+            <div class="project-emoji" aria-hidden="true">😊</div>
+            <h3 class="project-title">Mood Snap – Emotion Tracker</h3>
+            <p class="project-desc">
+              An AI application for real-time human emotion detection using PyTorch Convolutional Neural Networks. Trained on FER-2013 with webcam integration, calendar logging, and interactive data visualization.
+            </p>
+            <div class="project-tags">
+              <span class="tag">Python</span>
+              <span class="tag">CNN / PyTorch</span>
+              <span class="tag">Streamlit</span>
+              <span class="tag">Plotly</span>
+              <span class="tag">OpenCV</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/Aryan8538/Mood-Snap-Calender" target="_blank" class="project-link" aria-label="View Code for Mood Snap on GitHub">
+                <i class="fab fa-github"></i> Code
+              </a>
+              <button id="moodSnapModalBtn" class="project-link primary" aria-label="View Run Guide for Mood Snap">
+                <i class="fas fa-laptop-code"></i> Local Setup
+              </button>
+            </div>
+          </article>
+
+          <!-- Project 3: Cognitive Coach -->
+          <article class="project-card reveal" data-category="ai fullstack python">
+            <div class="project-number">03 / Featured</div>
+            <div class="project-emoji" aria-hidden="true">🧠</div>
+            <h3 class="project-title">Cognitive Coach</h3>
+            <p class="project-desc">
+              An AI-powered coaching web application designed to support reflective thinking and guided self-improvement. Built with a TypeScript-first frontend, Python backend components, responsive styling, and a deployed Vercel experience.
+            </p>
+            <div class="project-tags">
+              <span class="tag">TypeScript</span>
+              <span class="tag">Python</span>
+              <span class="tag">JavaScript</span>
+              <span class="tag">CSS</span>
+              <span class="tag">Vercel</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/Aryan8538/Cognitive-Coach" target="_blank" class="project-link" aria-label="View Code for Cognitive Coach on GitHub">
+                <i class="fab fa-github"></i> Code
+              </a>
+              <a href="https://cognitive-coach-one.vercel.app" target="_blank" class="project-link primary" aria-label="View Live Demo of Cognitive Coach">
+                <i class="fas fa-external-link-alt"></i> Live Demo
+              </a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience & Education Journey -->
+    <section class="section timeline-exp" id="experience">
+      <div class="container">
+        <div class="reveal">
+          <div class="section-label">Journey</div>
+          <h2 class="section-title">Timeline & Education</h2>
+          <p class="section-sub">A summary of my educational milestones, internships, and key achievements.</p>
+        </div>
+        
+        <div class="timeline-inner">
+          <!-- Experience Column -->
+          <div class="reveal-left">
+            <div class="timeline-col-title"><i class="fas fa-briefcase"></i> Experience</div>
+            <div class="timeline">
+              <article class="timeline-item">
+                <div class="timeline-date">FEB 2026</div>
+                <h3 class="timeline-title">Data Analytics Intern</h3>
+                <div class="timeline-org">Deloitte · Remote (Forage)</div>
+                <ul class="timeline-desc">
+                  <li>Performed end-to-end data cleaning, analysis, and interpretation on real business datasets.</li>
+                  <li>Generated actionable business insights using analytical techniques and data visualization.</li>
+                </ul>
+              </article>
+              <article class="timeline-item">
+                <div class="timeline-date">2025</div>
+                <h3 class="timeline-title">Hackathon Finalist</h3>
+                <div class="timeline-org">Next Gen Hack · National</div>
+                <ul class="timeline-desc">
+                  <li>Ranked in the Top 20 out of 500+ participants nationally.</li>
+                  <li>Built and presented a working prototype under time constraints.</li>
+                </ul>
+              </article>
+            </div>
+          </div>
+
+          <!-- Education Column -->
+          <div class="reveal-right">
+            <div class="timeline-col-title"><i class="fas fa-graduation-cap"></i> Education</div>
+            <div class="timeline">
+              <article class="timeline-item">
+                <div class="timeline-date">2023 – 2027</div>
+                <h3 class="timeline-title">B.Tech – CSE (IoT)</h3>
+                <div class="timeline-org">RKGIT, Ghaziabad, Uttar Pradesh</div>
+                <ul class="timeline-desc">
+                  <li>Current CGPA: 7.9 / 10.0</li>
+                  <li>Specialization in Internet of Things with core Computer Science foundations.</li>
+                  <li>Active member of the tech and coding community on campus.</li>
+                </ul>
+              </article>
+            </div>
+
+            <!-- Certifications below education -->
+            <div class="timeline-col-title" style="margin-top:40px"><i class="fas fa-certificate"></i> Certifications</div>
+            <div class="certs-awards-grid">
+              <div class="cert-item">
+                <div class="cert-icon blue"><i class="fas fa-network-wired"></i></div>
+                <div>
+                  <a href="https://www.linkedin.com/in/aryan-agarwal-923087360/overlay/Certifications/868521881/treasury/?profileId=ACoAAFm2PGsBmkSwcFyJLBueF88jdEzYZJYQXQc" target="_blank" class="cert-name">Introduction to IoT</a>
+                  <div class="cert-org">NPTEL</div>
+                </div>
+              </div>
+              <div class="cert-item">
+                <div class="cert-icon green"><i class="fab fa-python"></i></div>
+                <div>
+                  <a href="https://www.linkedin.com/in/aryan-agarwal-923087360/overlay/Certifications/868418742/treasury/?profileId=ACoAAFm2PGsBmkSwcFyJLBueF88jdEzYZJYQXQc" target="_blank" class="cert-name">Python for Data Science</a>
+                  <div class="cert-org">NPTEL</div>
+                </div>
+              </div>
+              <div class="cert-item">
+                <div class="cert-icon orange"><i class="fas fa-shield-alt"></i></div>
+                <div>
+                  <a href="https://www.linkedin.com/in/aryan-agarwal-923087360/overlay/Certifications/868078653/treasury/?profileId=ACoAAFm2PGsBmkSwcFyJLBueF88jdEzYZJYQXQc" target="_blank" class="cert-name">Python Essentials</a>
+                  <div class="cert-org">Cisco</div>
+                </div>
+              </div>
+              <div class="cert-item">
+                <div class="cert-icon purple"><i class="fas fa-chart-bar"></i></div>
+                <div>
+                  <a href="https://www.linkedin.com/in/aryan-agarwal-923087360/overlay/Certifications/867840860/treasury/?profileId=ACoAAFm2PGsBmkSwcFyJLBueF88jdEzYZJYQXQc" target="_blank" class="cert-name">Data Analytics Job Simulation</a>
+                  <div class="cert-org">Deloitte</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Award Banner -->
+        <div class="award-banner reveal">
+          <div class="award-trophy" aria-hidden="true">🏆</div>
           <div>
-            <div class="hero-stat-num">2+</div>
-            <div class="hero-stat-label">Projects Built</div>
-          </div>
-          <div>
-            <div class="hero-stat-num">Top 20</div>
-            <div class="hero-stat-label">Hackathon Rank</div>
-          </div>
-          <div>
-            <div class="hero-stat-num">7.9</div>
-            <div class="hero-stat-label">Current CGPA</div>
+            <div class="award-title">Next Gen Hack National Hackathon — 2025</div>
+            <p class="award-desc">Achieved Finalist status (Top 20 out of 500+ participants) in a competitive national hackathon, demonstrating rapid prototyping skills, problem solving under pressure, and presenting the final application to industry experts.</p>
           </div>
         </div>
       </div>
+    </section>
 
-      <!-- Hero Visual Card -->
-      <div class="hero-visual">
-        <div class="hero-card">
-          <div class="hero-avatar">AA</div>
-          <div class="hero-card-name">Aryan Agarwal</div>
-          <div class="hero-card-role-text">Web Developer & CS Student</div>
-          <div class="hero-card-chips">
-            <span class="hero-card-chip">React.js</span>
-            <span class="hero-card-chip">FastAPI</span>
-            <span class="hero-card-chip">Python</span>
-            <span class="hero-card-chip">AI/ML</span>
-            <span class="hero-card-chip">Node.js</span>
-            <span class="hero-card-chip">JavaScript</span>
-          </div>
+    <!-- Contact Section -->
+    <section class="section contact-section" id="contact">
+      <div class="container">
+        <div class="reveal" style="text-align:center; margin-bottom:60px">
+          <div class="section-label" style="justify-content:center;display:flex">Contact</div>
+          <h2 class="section-title">Let's Work Together</h2>
+          <p class="section-sub" style="margin:0 auto">Open to internships, collaborations, and exciting opportunities. Drop me a message!</p>
         </div>
-        <div class="float-badge float-badge-1">
-          <div class="float-badge-icon">🏆</div>
-          <div class="float-badge-text">Hackathon</div>
-          <div class="float-badge-val">Top 20</div>
-        </div>
-        <div class="float-badge float-badge-2">
-          <div class="float-badge-icon">🤖</div>
-          <div class="float-badge-text">AI Projects</div>
-          <div class="float-badge-val">2 Live</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================================ ABOUT -->
-  <section class="section" id="about">
-    <div class="container">
-      <div class="about-grid">
-        <div class="about-text reveal-left">
-          <div class="section-label">About Me</div>
-          <h2 class="section-title">Building the future,<br>one line at a time.</h2>
-          <p>
-            I'm a B.Tech Computer Science (IoT) student at RKGIT, Ghaziabad, with a strong passion for building AI-powered, full-stack web applications that solve real-world problems.
-          </p>
-          <p>
-            From training CNN models to detect human emotions, to architecting React frontends backed by FastAPI — I thrive at the intersection of intelligence and interface. Currently leveling up my MERN stack skills to complement my existing Python and React ecosystem expertise.
-          </p>
-          <p>
-            I was a finalist (Top 20/500+) at the Next Gen Hack National Hackathon in 2025, and I'm driven by the challenge of building things that are both technically sound and visually delightful.
-          </p>
-          <div class="about-interests">
-            <span class="interest-tag"><i class="fas fa-brain"></i> AI/ML</span>
-            <span class="interest-tag"><i class="fas fa-globe"></i> Web Dev</span>
-            <span class="interest-tag"><i class="fas fa-chart-line"></i> Data Analytics</span>
-            <span class="interest-tag"><i class="fas fa-microchip"></i> IoT</span>
-            <span class="interest-tag"><i class="fas fa-code"></i> Open Source</span>
-          </div>
-        </div>
-        <div class="about-cards reveal-right">
-          <div class="about-card">
-            <div class="about-card-icon"><i class="fas fa-graduation-cap"></i></div>
-            <h4>Currently Studying</h4>
-            <p>B.Tech in CSE (IoT) at RKGIT, Ghaziabad. Expected graduation 2027. CGPA: 7.9/10</p>
-          </div>
-          <div class="about-card">
-            <div class="about-card-icon"><i class="fas fa-layer-group"></i></div>
-            <h4>Full-Stack Focus</h4>
-            <p>Specializing in React + FastAPI architecture, and actively upskilling in MERN stack for complete end-to-end development.</p>
-          </div>
-          <div class="about-card">
-            <div class="about-card-icon"><i class="fas fa-robot"></i></div>
-            <h4>AI Integration</h4>
-            <p>Experienced in building AI-powered apps using PyTorch CNNs, Groq API, and OpenCV for real-world computer vision.</p>
-          </div>
-          <div class="about-card">
-            <div class="about-card-icon"><i class="fas fa-trophy"></i></div>
-            <h4>Hackathon Finalist</h4>
-            <p>Ranked in the Top 20 out of 500+ participants at Next Gen Hack 2025 — a national-level hackathon.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================================ SKILLS -->
-  <section class="section skills-section" id="skills">
-    <div class="container">
-      <div class="reveal">
-        <div class="section-label">Technical Skills</div>
-        <h2 class="section-title">What I work with</h2>
-        <p class="section-sub">A snapshot of the technologies and tools I use to bring ideas to life.</p>
-      </div>
-      <div class="skills-grid reveal">
-        <!-- Frontend -->
-        <div class="skill-category">
-          <div class="skill-cat-header">
-            <div class="skill-cat-icon"><i class="fas fa-palette"></i></div>
-            <div class="skill-cat-name">Frontend</div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-info"><span class="skill-name">React.js</span><span class="skill-pct">82%</span></div>
-            <div class="skill-bar"><div class="skill-bar-fill" data-width="82"></div></div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-info"><span class="skill-name">JavaScript (ES6+)</span><span class="skill-pct">85%</span></div>
-            <div class="skill-bar"><div class="skill-bar-fill" data-width="85"></div></div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-info"><span class="skill-name">HTML5 & CSS3</span><span class="skill-pct">90%</span></div>
-            <div class="skill-bar"><div class="skill-bar-fill" data-width="90"></div></div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-info"><span class="skill-name">Responsive Design</span><span class="skill-pct">88%</span></div>
-            <div class="skill-bar"><div class="skill-bar-fill" data-width="88"></div></div>
-          </div>
-        </div>
-
-        <!-- Backend -->
-        <div class="skill-category">
-          <div class="skill-cat-header">
-            <div class="skill-cat-icon"><i class="fas fa-server"></i></div>
-            <div class="skill-cat-name">Backend & APIs</div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-info"><span class="skill-name">Python</span><span class="skill-pct">88%</span></div>
-            <div class="skill-bar"><div class="skill-bar-fill" data-width="88"></div></div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-info"><span class="skill-name">FastAPI</span><span class="skill-pct">80%</span></div>
-            <div class="skill-bar"><div class="skill-bar-fill" data-width="80"></div></div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-info"><span class="skill-name">REST APIs</span><span class="skill-pct">82%</span></div>
-            <div class="skill-bar"><div class="skill-bar-fill" data-width="82"></div></div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-info"><span class="skill-name">MySQL</span><span class="skill-pct">72%</span></div>
-            <div class="skill-bar"><div class="skill-bar-fill" data-width="72"></div></div>
-          </div>
-        </div>
-
-        <!-- AI/ML -->
-        <div class="skill-category">
-          <div class="skill-cat-header">
-            <div class="skill-cat-icon"><i class="fas fa-brain"></i></div>
-            <div class="skill-cat-name">AI / ML Libraries</div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-info"><span class="skill-name">PyTorch</span><span class="skill-pct">74%</span></div>
-            <div class="skill-bar"><div class="skill-bar-fill" data-width="74"></div></div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-info"><span class="skill-name">OpenCV</span><span class="skill-pct">76%</span></div>
-            <div class="skill-bar"><div class="skill-bar-fill" data-width="76"></div></div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-info"><span class="skill-name">Pandas / NumPy</span><span class="skill-pct">80%</span></div>
-            <div class="skill-bar"><div class="skill-bar-fill" data-width="80"></div></div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-info"><span class="skill-name">Streamlit / Plotly</span><span class="skill-pct">78%</span></div>
-            <div class="skill-bar"><div class="skill-bar-fill" data-width="78"></div></div>
-          </div>
-        </div>
-
-        <!-- Tools -->
-        <div class="skill-category">
-          <div class="skill-cat-header">
-            <div class="skill-cat-icon"><i class="fas fa-tools"></i></div>
-            <div class="skill-cat-name">Tools & Concepts</div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-info"><span class="skill-name">Git & GitHub</span><span class="skill-pct">85%</span></div>
-            <div class="skill-bar"><div class="skill-bar-fill" data-width="85"></div></div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-info"><span class="skill-name">C / C++</span><span class="skill-pct">78%</span></div>
-            <div class="skill-bar"><div class="skill-bar-fill" data-width="78"></div></div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-info"><span class="skill-name">DSA</span><span class="skill-pct">72%</span></div>
-            <div class="skill-bar"><div class="skill-bar-fill" data-width="72"></div></div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-info"><span class="skill-name">OOP / DBMS / OS</span><span class="skill-pct">80%</span></div>
-            <div class="skill-bar"><div class="skill-bar-fill" data-width="80"></div></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Tech Icons -->
-      <div class="tech-icons-row reveal">
-        <div class="tech-icon-item"><i class="fab fa-react"></i><span>React</span></div>
-        <div class="tech-icon-item"><i class="fab fa-python"></i><span>Python</span></div>
-        <div class="tech-icon-item"><i class="fab fa-js"></i><span>JS</span></div>
-        <div class="tech-icon-item"><i class="fab fa-html5"></i><span>HTML5</span></div>
-        <div class="tech-icon-item"><i class="fab fa-css3-alt"></i><span>CSS3</span></div>
-        <div class="tech-icon-item"><i class="fab fa-git-alt"></i><span>Git</span></div>
-        <div class="tech-icon-item"><i class="fab fa-github"></i><span>GitHub</span></div>
-        <div class="tech-icon-item"><i class="fas fa-database"></i><span>MySQL</span></div>
-        <div class="tech-icon-item"><i class="fas fa-bolt"></i><span>FastAPI</span></div>
-        <div class="tech-icon-item"><i class="fas fa-eye"></i><span>OpenCV</span></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================================ PROJECTS -->
-  <section class="section" id="projects">
-    <div class="container">
-      <div class="reveal">
-        <div class="section-label">Projects</div>
-        <h2 class="section-title">Things I've Built</h2>
-        <p class="section-sub">Real-world applications I've designed, developed, and deployed. From AI-powered tools to interactive web apps.</p>
-      </div>
-      <div class="project-filters reveal">
-        <button class="filter-btn active" data-filter="all">All</button>
-        <button class="filter-btn" data-filter="ai">AI/ML</button>
-        <button class="filter-btn" data-filter="fullstack">Full-Stack</button>
-        <button class="filter-btn" data-filter="python">Python</button>
-      </div>
-      <div class="projects-grid" id="projectsGrid">
-
-        <!-- Project 1 -->
-        <div class="project-card reveal" data-category="ai fullstack">
-          <div class="project-number">01 / Featured</div>
-          <div class="project-emoji">💹</div>
-          <h3 class="project-title">FinSight AI – AI Financial Advisor</h3>
-          <p class="project-desc">
-            A full-stack AI-powered financial advisor targeted at students. Features stock tracking, portfolio management, financial literacy modules, and an integrated AI chatbot delivering personalized financial insights.
-          </p>
-          <div class="project-tags">
-            <span class="tag">React.js</span>
-            <span class="tag">FastAPI</span>
-            <span class="tag">Groq API</span>
-            <span class="tag">Uvicorn</span>
-            <span class="tag">AI Chatbot</span>
-          </div>
-          <div class="project-links">
-            <a href="https://github.com/Aryan8538/FinSight-AI" target="_blank" class="project-link">
-              <i class="fab fa-github"></i> Code
-            </a>
-            <a href="https://fin-sight-ai-black.vercel.app/" target="_blank" class="project-link primary">
-              <i class="fas fa-external-link-alt"></i> Live Demo
-            </a>
-          </div>
-        </div>
-
-        <!-- Project 2 -->
-        <div class="project-card reveal" data-category="ai python">
-          <div class="project-number">02 / Featured</div>
-          <div class="project-emoji">😊</div>
-          <h3 class="project-title">Mood Snap – Emotion Tracker</h3>
-          <p class="project-desc">
-            An AI-based web application for real-time human emotion detection using Convolutional Neural Networks. Trained on the FER-2013 dataset with an interactive analytics dashboard and user data privacy compliance.
-          </p>
-          <div class="project-tags">
-            <span class="tag">Python</span>
-            <span class="tag">CNN / PyTorch</span>
-            <span class="tag">Streamlit</span>
-            <span class="tag">Plotly</span>
-            <span class="tag">OpenCV</span>
-          </div>
-          <div class="project-links">
-            <a href="https://github.com/Aryan8538/Mood-Snap-Calender" target="_blank" class="project-link">
-              <i class="fab fa-github"></i> Code
-            </a>
-            <a href="#" class="project-link primary">
-              <i class="fas fa-external-link-alt"></i> Live Demo
-            </a>
-          </div>
-        </div>
-
-        <!-- Project 3 -->
-        <div class="project-card reveal" data-category="ai fullstack python">
-          <div class="project-number">03 / Featured</div>
-          <div class="project-emoji">🧠</div>
-          <h3 class="project-title">Cognitive Coach</h3>
-          <p class="project-desc">
-            An AI-powered coaching web app designed to support reflective thinking and guided self-improvement. Built with a TypeScript-first frontend, Python backend components, responsive styling, and a deployed Vercel experience.
-          </p>
-          <div class="project-tags">
-            <span class="tag">TypeScript</span>
-            <span class="tag">Python</span>
-            <span class="tag">JavaScript</span>
-            <span class="tag">CSS</span>
-            <span class="tag">Vercel</span>
-          </div>
-          <div class="project-links">
-            <a href="https://github.com/Aryan8538/Cognitive-Coach" target="_blank" class="project-link">
-              <i class="fab fa-github"></i> Code
-            </a>
-            <a href="https://cognitive-coach-one.vercel.app" target="_blank" class="project-link primary">
-              <i class="fas fa-external-link-alt"></i> Live Demo
-            </a>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================================ EXPERIENCE & EDUCATION -->
-  <section class="section timeline-exp" id="experience">
-    <div class="container">
-      <div class="reveal">
-        <div class="section-label">Journey</div>
-        <h2 class="section-title">Experience & Education</h2>
-        <p class="section-sub">My professional timeline — where I've worked and what I've studied.</p>
-      </div>
-      <div class="timeline-inner">
-        <!-- Experience -->
-        <div class="reveal-left">
-          <div class="timeline-col-title"><i class="fas fa-briefcase"></i> Experience</div>
-          <div class="timeline">
-            <div class="timeline-item">
-              <div class="timeline-date">FEB 2026</div>
-              <div class="timeline-title">Data Analytics Intern</div>
-              <div class="timeline-org">Deloitte · Remote (Forage)</div>
-              <ul class="timeline-desc">
-                <li>Performed end-to-end data cleaning, analysis, and interpretation on real business datasets.</li>
-                <li>Generated actionable business insights using analytical techniques and data visualization.</li>
-              </ul>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-date">2025</div>
-              <div class="timeline-title">Hackathon Finalist</div>
-              <div class="timeline-org">Next Gen Hack · National</div>
-              <ul class="timeline-desc">
-                <li>Ranked in the Top 20 out of 500+ participants nationally.</li>
-                <li>Built and presented a working prototype under time constraints.</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <!-- Education -->
-        <div class="reveal-right">
-          <div class="timeline-col-title"><i class="fas fa-graduation-cap"></i> Education</div>
-          <div class="timeline">
-            <div class="timeline-item">
-              <div class="timeline-date">2023 – 2027</div>
-              <div class="timeline-title">B.Tech – CSE (IoT)</div>
-              <div class="timeline-org">RKGIT, Ghaziabad, Uttar Pradesh</div>
-              <ul class="timeline-desc">
-                <li>Current CGPA: 7.9 / 10.0</li>
-                <li>Specialization in Internet of Things with core CS foundations.</li>
-                <li>Active member of the tech and coding community on campus.</li>
-              </ul>
+        
+        <div class="contact-grid">
+          <div class="contact-info reveal-left">
+            <h3>Get in Touch</h3>
+            <p>Have a project in mind, want to collaborate on research, or discuss opportunities? Feel free to reach out. I'll get back to you as soon as possible.</p>
+            <div class="contact-links">
+              <a href="mailto:33iot2324@rkgit.edu.in" class="contact-link" aria-label="Send Email to 33iot2324@rkgit.edu.in">
+                <div class="contact-link-icon email"><i class="fas fa-envelope"></i></div>
+                <div>
+                  <div class="contact-link-text">33iot2324@rkgit.edu.in</div>
+                  <div class="contact-link-label">EMAIL</div>
+                </div>
+              </a>
+              <a href="tel:+919149359862" class="contact-link" aria-label="Call +91-9149359862">
+                <div class="contact-link-icon phone"><i class="fas fa-phone"></i></div>
+                <div>
+                  <div class="contact-link-text">+91-9149359862</div>
+                  <div class="contact-link-label">PHONE</div>
+                </div>
+              </a>
+              <a href="https://linkedin.com/in/aryan-agarwal-923087360" target="_blank" class="contact-link" aria-label="View LinkedIn Profile">
+                <div class="contact-link-icon linkedin"><i class="fab fa-linkedin-in"></i></div>
+                <div>
+                  <div class="contact-link-text">aryan-agarwal-923087360</div>
+                  <div class="contact-link-label">LINKEDIN</div>
+                </div>
+              </a>
+              <a href="https://github.com/Aryan8538" target="_blank" class="contact-link" aria-label="View GitHub Profile">
+                <div class="contact-link-icon github"><i class="fab fa-github"></i></div>
+                <div>
+                  <div class="contact-link-text">github.com/Aryan8538</div>
+                  <div class="contact-link-label">GITHUB</div>
+                </div>
+              </a>
             </div>
           </div>
 
-          <!-- Certifications below education -->
-          <div class="timeline-col-title" style="margin-top:36px"><i class="fas fa-certificate"></i> Certifications</div>
-          <div class="certs-awards-grid" style="grid-template-columns:1fr">
-            <div class="cert-item">
-              <div class="cert-icon blue"><i class="fas fa-network-wired"></i></div>
-              <div><a href="https://www.linkedin.com/in/aryan-agarwal-923087360/overlay/Certifications/868521881/treasury/?profileId=ACoAAFm2PGsBmkSwcFyJLBueF88jdEzYZJYQXQc" target="_blank" class="cert-name">Introduction to IoT</a><div class="cert-org">NPTEL</div></div>
-            </div>
-            <div class="cert-item">
-              <div class="cert-icon green"><i class="fab fa-python"></i></div>
-              <div><a href="https://www.linkedin.com/in/aryan-agarwal-923087360/overlay/Certifications/868418742/treasury/?profileId=ACoAAFm2PGsBmkSwcFyJLBueF88jdEzYZJYQXQc" target="_blank" class="cert-name">Python for Data Science</a><div class="cert-org">NPTEL</div></div>
-            </div>
-            <div class="cert-item">
-              <div class="cert-icon orange"><i class="fas fa-shield-alt"></i></div>
-              <div><a href="https://www.linkedin.com/in/aryan-agarwal-923087360/overlay/Certifications/868078653/treasury/?profileId=ACoAAFm2PGsBmkSwcFyJLBueF88jdEzYZJYQXQc" target="_blank" class="cert-name">Python Essentials</a><div class="cert-org">Cisco</div></div>
-            </div>
-            <div class="cert-item">
-              <div class="cert-icon purple"><i class="fas fa-chart-bar"></i></div>
-              <div><a href="https://www.linkedin.com/in/aryan-agarwal-923087360/overlay/Certifications/867840860/treasury/?profileId=ACoAAFm2PGsBmkSwcFyJLBueF88jdEzYZJYQXQc" target="_blank" class="cert-name">Data Analytics Job Simulation</a><div class="cert-org">Deloitte</div></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Award Banner -->
-      <div class="award-banner reveal">
-        <div class="award-trophy">🏆</div>
-        <div>
-          <div class="award-title">Next Gen Hack National Hackathon — 2025</div>
-          <div class="award-desc">Achieved Finalist status (Top 20 out of 500+ participants) in a competitive national hackathon, demonstrating problem-solving ability and rapid prototyping skills under pressure.</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================================ CONTACT -->
-  <section class="section contact-section" id="contact">
-    <div class="container">
-      <div class="reveal" style="text-align:center; margin-bottom:60px">
-        <div class="section-label" style="justify-content:center;display:flex">Contact</div>
-        <h2 class="section-title">Let's Work Together</h2>
-        <p class="section-sub" style="margin:0 auto">Open to internships, collaborations, and exciting opportunities. Drop me a message!</p>
-      </div>
-      <div class="contact-grid">
-        <div class="contact-info reveal-left">
-          <h3>Get in Touch</h3>
-          <p>Whether you have a project in mind, want to collaborate, or just say hi — my inbox is always open. I'll get back to you as soon as possible.</p>
-          <div class="contact-links">
-            <a href="mailto:33iot2324@rkgit.edu.in" class="contact-link">
-              <div class="contact-link-icon email"><i class="fas fa-envelope"></i></div>
-              <div>
-                <div class="contact-link-text">33iot2324@rkgit.edu.in</div>
-                <div class="contact-link-label">EMAIL</div>
+          <!-- Contact Form (Web3Forms Integrated) -->
+          <div class="contact-form reveal-right" id="contactFormWrap">
+            <!-- Instructions for user to customize Web3forms key:
+                 To receive real emails, register for a free token at web3forms.com and paste it in the value of the hidden input below.
+            -->
+            <input type="hidden" id="web3formsKey" value="e30f14d8-b5a9-4674-bf83-0ad2b3c22421" />
+            
+            <div id="formContent">
+              <div class="form-row">
+                <div class="form-group" id="fg-name">
+                  <label class="form-label" for="name">YOUR NAME</label>
+                  <input class="form-input" type="text" id="name" name="name" placeholder="John Doe" required />
+                  <div class="form-error">Please enter your name.</div>
+                </div>
+                <div class="form-group" id="fg-email">
+                  <label class="form-label" for="email">EMAIL ADDRESS</label>
+                  <input class="form-input" type="email" id="email" name="email" placeholder="john@example.com" required />
+                  <div class="form-error">Please enter a valid email.</div>
+                </div>
               </div>
-            </a>
-            <a href="tel:+919149359862" class="contact-link">
-              <div class="contact-link-icon phone"><i class="fas fa-phone"></i></div>
-              <div>
-                <div class="contact-link-text">+91-9149359862</div>
-                <div class="contact-link-label">PHONE</div>
+              <div class="form-group" id="fg-subject">
+                <label class="form-label" for="subject">SUBJECT</label>
+                <input class="form-input" type="text" id="subject" name="subject" placeholder="Internship Opportunity" required />
+                <div class="form-error">Please enter a subject.</div>
               </div>
-            </a>
-            <a href="https://linkedin.com/in/aryan-agarwal-923087360" target="_blank" class="contact-link">
-              <div class="contact-link-icon linkedin"><i class="fab fa-linkedin-in"></i></div>
-              <div>
-                <div class="contact-link-text">aryan-agarwal-923087360</div>
-                <div class="contact-link-label">LINKEDIN</div>
+              <div class="form-group" id="fg-message">
+                <label class="form-label" for="message">MESSAGE</label>
+                <textarea class="form-textarea" id="message" name="message" placeholder="Tell me about your project..." required></textarea>
+                <div class="form-error">Please write a message (at least 10 characters).</div>
               </div>
-            </a>
-            <a href="https://github.com/Aryan8538" target="_blank" class="contact-link">
-              <div class="contact-link-icon github"><i class="fab fa-github"></i></div>
-              <div>
-                <div class="contact-link-text">github.com/Aryan8538</div>
-                <div class="contact-link-label">GITHUB</div>
-              </div>
-            </a>
-          </div>
-        </div>
-
-        <div class="contact-form reveal-right" id="contactFormWrap">
-          <div id="formContent">
-            <div class="form-row">
-              <div class="form-group" id="fg-name">
-                <label class="form-label" for="name">YOUR NAME</label>
-                <input class="form-input" type="text" id="name" placeholder="John Doe" />
-                <div class="form-error">Please enter your name.</div>
-              </div>
-              <div class="form-group" id="fg-email">
-                <label class="form-label" for="email">EMAIL ADDRESS</label>
-                <input class="form-input" type="email" id="email" placeholder="john@example.com" />
-                <div class="form-error">Please enter a valid email.</div>
-              </div>
+              <button class="btn-submit" id="submitBtn" type="button">
+                <i class="fas fa-paper-plane"></i> Send Message
+              </button>
             </div>
-            <div class="form-group" id="fg-subject">
-              <label class="form-label" for="subject">SUBJECT</label>
-              <input class="form-input" type="text" id="subject" placeholder="Internship Opportunity" />
-              <div class="form-error">Please enter a subject.</div>
+            
+            <div class="form-success" id="formSuccess">
+              <i class="fas fa-check-circle" aria-hidden="true"></i>
+              <h3>Message Sent!</h3>
+              <p>Thanks for reaching out. I'll get back to you within 24 hours.</p>
             </div>
-            <div class="form-group" id="fg-message">
-              <label class="form-label" for="message">MESSAGE</label>
-              <textarea class="form-textarea" id="message" placeholder="Tell me about your project..."></textarea>
-              <div class="form-error">Please enter a message.</div>
-            </div>
-            <button class="btn-submit" id="submitBtn" type="button">
-              <i class="fas fa-paper-plane"></i> Send Message
-            </button>
-          </div>
-          <div class="form-success" id="formSuccess">
-            <i class="fas fa-check-circle"></i>
-            <h3 style="font-family:var(--font-display);font-weight:700;margin-bottom:8px">Message Sent!</h3>
-            <p>Thanks for reaching out. I'll get back to you within 24 hours.</p>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
   <!-- Footer -->
   <footer>
-    <div class="footer-inner">
-      <div class="footer-logo">Aryan<span>.</span></div>
-      <div class="footer-copy">© 2024 Aryan Agarwal · Built with passion & code</div>
-      <div class="footer-socials">
-        <a href="https://github.com/Aryan8538" target="_blank" class="footer-social"><i class="fab fa-github"></i></a>
-        <a href="https://linkedin.com/in/aryan-agarwal-923087360" target="_blank" class="footer-social"><i class="fab fa-linkedin-in"></i></a>
-        <a href="mailto:33iot2324@rkgit.edu.in" class="footer-social"><i class="fas fa-envelope"></i></a>
+    <div class="container">
+      <div class="footer-inner">
+        <a href="#hero" class="footer-logo">Aryan<span>.</span></a>
+        <div class="footer-copy">© 2026 Aryan Agarwal · Built with passion & clean code</div>
+        <div class="footer-socials">
+          <a href="https://github.com/Aryan8538" target="_blank" class="footer-social" aria-label="GitHub Profile"><i class="fab fa-github"></i></a>
+          <a href="https://linkedin.com/in/aryan-agarwal-923087360" target="_blank" class="footer-social" aria-label="LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
+          <a href="mailto:33iot2324@rkgit.edu.in" class="footer-social" aria-label="Email Aryan"><i class="fas fa-envelope"></i></a>
+        </div>
       </div>
     </div>
   </footer>
 
-  <!-- Back to Top -->
+  <!-- Back to Top Button -->
   <button class="back-top" id="backTop" aria-label="Back to top">
     <i class="fas fa-chevron-up"></i>
   </button>
 
-  <script>
-    /* ============================================================
-       THEME TOGGLE
-    ============================================================ */
-    const html = document.documentElement;
-    const themeToggle = document.getElementById('themeToggle');
-    const themeIcon = themeToggle.querySelector('i');
-    let dark = true;
+  <!-- Mood Snap Run Guide Modal Overlay -->
+  <div class="modal-overlay" id="moodSnapModal" aria-hidden="true" role="dialog">
+    <div class="modal-content">
+      <button class="modal-close" id="modalClose" aria-label="Close modal"><i class="fas fa-times"></i></button>
+      <div class="modal-header">
+        <span class="emoji" aria-hidden="true">😊</span>
+        <div>
+          <h3>Mood Snap – Local Run Guide</h3>
+          <p class="tag">Python · OpenCV · PyTorch</p>
+        </div>
+      </div>
+      <div class="modal-body">
+        <p>
+          <strong>Mood Snap</strong> uses a local webcam feed and PyTorch CNNs to run real-time emotion detection models. Since it accesses local hardware (camera), it is run locally.
+        </p>
+        
+        <h4>1. Clone the repository</h4>
+        <div class="code-block">
+          <code>git clone https://github.com/Aryan8538/Mood-Snap-Calender.git
+cd Mood-Snap-Calender/Mood-Snap</code>
+        </div>
+        
+        <h4>2. Install dependencies</h4>
+        <div class="code-block">
+          <code>pip install -r requirements.txt</code>
+        </div>
+        
+        <h4>3. Execute the Streamlit App</h4>
+        <div class="code-block">
+          <code>cd "happiness calander"
+streamlit run app.py</code>
+        </div>
+        
+        <p style="margin-top:20px; font-size:0.9rem; color:var(--text3);">
+          Note: Make sure your webcam is connected and you grant camera permissions to the local Streamlit tab when prompted!
+        </p>
+      </div>
+    </div>
+  </div>
 
-    themeToggle.addEventListener('click', () => {
-      dark = !dark;
-      html.setAttribute('data-theme', dark ? 'dark' : 'light');
-      themeIcon.className = dark ? 'fas fa-moon' : 'fas fa-sun';
-    });
-
-    /* ============================================================
-       NAVBAR SCROLL
-    ============================================================ */
-    const navbar = document.getElementById('navbar');
-    const backTop = document.getElementById('backTop');
-    const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('.nav-links a');
-
-    window.addEventListener('scroll', () => {
-      const y = window.scrollY;
-      navbar.classList.toggle('scrolled', y > 20);
-      backTop.classList.toggle('show', y > 400);
-
-      // Active nav
-      let current = '';
-      sections.forEach(sec => {
-        if (y >= sec.offsetTop - 100) current = sec.getAttribute('id');
-      });
-      navLinks.forEach(a => {
-        a.classList.toggle('active', a.getAttribute('href') === '#' + current);
-      });
-    });
-
-    backTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-
-    /* ============================================================
-       HAMBURGER / MOBILE MENU
-    ============================================================ */
-    const hamburger = document.getElementById('hamburger');
-    const mobileMenu = document.getElementById('mobileMenu');
-
-    hamburger.addEventListener('click', () => {
-      hamburger.classList.toggle('open');
-      mobileMenu.classList.toggle('open');
-    });
-
-    document.querySelectorAll('.mobile-link').forEach(link => {
-      link.addEventListener('click', () => {
-        hamburger.classList.remove('open');
-        mobileMenu.classList.remove('open');
-      });
-    });
-
-    /* ============================================================
-       TYPING ANIMATION
-    ============================================================ */
-    const phrases = [
-      'Web Developer',
-      'React Enthusiast',
-      'AI Builder',
-      'FastAPI Developer',
-      'CS Engineering Student',
-      'Full-Stack Learner'
-    ];
-    let pi = 0, ci = 0, deleting = false;
-    const typedEl = document.getElementById('typed-text');
-
-    function type() {
-      const phrase = phrases[pi];
-      if (!deleting) {
-        typedEl.textContent = phrase.slice(0, ++ci);
-        if (ci === phrase.length) { deleting = true; setTimeout(type, 1800); return; }
-      } else {
-        typedEl.textContent = phrase.slice(0, --ci);
-        if (ci === 0) { deleting = false; pi = (pi + 1) % phrases.length; }
-      }
-      setTimeout(type, deleting ? 50 : 90);
-    }
-    type();
-
-    /* ============================================================
-       SCROLL REVEAL
-    ============================================================ */
-    const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .timeline-item');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.classList.add('visible');
-          // Skill bars
-          e.target.querySelectorAll('.skill-bar-fill').forEach(bar => {
-            bar.style.width = bar.dataset.width + '%';
-          });
-        }
-      });
-    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-
-    revealEls.forEach(el => observer.observe(el));
-
-    // Skill bars in already-visible elements
-    document.querySelectorAll('.skill-bar-fill').forEach(bar => {
-      const parent = bar.closest('.reveal');
-      if (parent && parent.classList.contains('visible')) {
-        bar.style.width = bar.dataset.width + '%';
-      }
-    });
-
-    /* ============================================================
-       PROJECT FILTERS
-    ============================================================ */
-    const filterBtns = document.querySelectorAll('.filter-btn');
-    const projectCards = document.querySelectorAll('.project-card');
-
-    filterBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        filterBtns.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        const filter = btn.dataset.filter;
-        projectCards.forEach(card => {
-          const cats = card.dataset.category || '';
-          const show = filter === 'all' || cats.includes(filter);
-          card.style.display = show ? '' : 'none';
-          card.style.opacity = '0';
-          card.style.transform = 'translateY(20px)';
-          if (show) {
-            requestAnimationFrame(() => {
-              card.style.transition = 'opacity 0.4s, transform 0.4s';
-              card.style.opacity = '1';
-              card.style.transform = 'translateY(0)';
-            });
-          }
-        });
-      });
-    });
-
-    /* ============================================================
-       CONTACT FORM VALIDATION
-    ============================================================ */
-    const submitBtn = document.getElementById('submitBtn');
-
-    function validate(id, fgId, check) {
-      const val = document.getElementById(id).value.trim();
-      const fg = document.getElementById(fgId);
-      const ok = check(val);
-      fg.classList.toggle('error', !ok);
-      return ok;
-    }
-
-    submitBtn.addEventListener('click', () => {
-      const n = validate('name', 'fg-name', v => v.length > 0);
-      const e = validate('email', 'fg-email', v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v));
-      const s = validate('subject', 'fg-subject', v => v.length > 0);
-      const m = validate('message', 'fg-message', v => v.length > 10);
-
-      if (n && e && s && m) {
-        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-        submitBtn.disabled = true;
-        setTimeout(() => {
-          document.getElementById('formContent').style.display = 'none';
-          document.getElementById('formSuccess').style.display = 'block';
-        }, 1200);
-      }
-    });
-
-    // Live validation
-    ['name','email','subject','message'].forEach(id => {
-      document.getElementById(id).addEventListener('input', () => {
-        document.getElementById('fg-' + id)?.classList.remove('error');
-      });
-    });
-  </script>
+  <!-- Main JavaScript File -->
+  <script src="js/main.js"></script>
 </body>
 </html>
