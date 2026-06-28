@@ -12,7 +12,7 @@ A premium, modern single-page portfolio website showcasing web development exper
 - **Dark & Light Mode**: Seamless transitions with local storage caching to remember theme choices.
 - **Scroll Progress Indicator**: Accent-colored progress indicator highlighting depth of read.
 - **Responsive Media Queries**: Fully optimized experience on desktop, tablet, and mobile screens.
-- **Interactive Modals**: Embedded dynamic run-guides for projects that require local webcam hardware.
+- **Live Demos**: Fully deployed, interactive web experiences for all showcased projects.
 - **Web3Forms Contact Form**: Fully validated email submission system with zero server overhead.
 
 ---
@@ -35,7 +35,7 @@ A full-stack financial literacy web application for students. Features stock tra
 ### 😊 2. Mood Snap – Emotion Tracker
 An AI daily emotion logger mapping webcam captures using PyTorch CNNs trained on the FER-2013 dataset. Includes interactive dashboard charts.
 - **Tech**: Python, PyTorch, Streamlit, OpenCV, Plotly
-- [Mood-Snap Repo](https://github.com/Aryan8538/Mood-Snap-Calender)
+- [Mood-Snap Repo](https://github.com/Aryan8538/Mood-Snap-Calender) | [Live Demo](https://mood-snap-calender.streamlit.app/)
 
 ### 🧠 3. Cognitive Coach
 An AI-powered coaching web app designed to support reflective thinking and guided self-improvement.

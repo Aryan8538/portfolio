@@ -199,32 +199,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  /* ============================================================
-     MOOD SNAP LOCAL DEMO MODAL POPUP
-  ============================================================ */
-  const moodSnapModalBtn = document.getElementById('moodSnapModalBtn');
-  const moodSnapModal = document.getElementById('moodSnapModal');
-  const modalClose = document.getElementById('modalClose');
 
-  if (moodSnapModalBtn && moodSnapModal) {
-    moodSnapModalBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      moodSnapModal.classList.add('open');
-      document.body.style.overflow = 'hidden';
-    });
-
-    const closeModal = () => {
-      moodSnapModal.classList.remove('open');
-      document.body.style.overflow = '';
-    };
-
-    modalClose.addEventListener('click', closeModal);
-    moodSnapModal.addEventListener('click', (e) => {
-      if (e.target === moodSnapModal) {
-        closeModal();
-      }
-    });
-  }
 
   /* ============================================================
      CONTACT FORM VALIDATION & WEB3FORMS SUBMISSION

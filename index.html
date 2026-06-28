@@ -374,9 +374,9 @@
               <a href="https://github.com/Aryan8538/Mood-Snap-Calender" target="_blank" class="project-link" aria-label="View Code for Mood Snap on GitHub">
                 <i class="fab fa-github"></i> Code
               </a>
-              <button id="moodSnapModalBtn" class="project-link primary" aria-label="View Run Guide for Mood Snap">
-                <i class="fas fa-laptop-code"></i> Local Setup
-              </button>
+              <a href="https://mood-snap-calender.streamlit.app/" target="_blank" class="project-link primary" aria-label="View Live Demo of Mood Snap">
+                <i class="fas fa-external-link-alt"></i> Live Demo
+              </a>
             </div>
           </article>
 
@@ -617,45 +617,7 @@
     <i class="fas fa-chevron-up"></i>
   </button>
 
-  <!-- Mood Snap Run Guide Modal Overlay -->
-  <div class="modal-overlay" id="moodSnapModal" aria-hidden="true" role="dialog">
-    <div class="modal-content">
-      <button class="modal-close" id="modalClose" aria-label="Close modal"><i class="fas fa-times"></i></button>
-      <div class="modal-header">
-        <span class="emoji" aria-hidden="true">😊</span>
-        <div>
-          <h3>Mood Snap – Local Run Guide</h3>
-          <p class="tag">Python · OpenCV · PyTorch</p>
-        </div>
-      </div>
-      <div class="modal-body">
-        <p>
-          <strong>Mood Snap</strong> uses a local webcam feed and PyTorch CNNs to run real-time emotion detection models. Since it accesses local hardware (camera), it is run locally.
-        </p>
-        
-        <h4>1. Clone the repository</h4>
-        <div class="code-block">
-          <code>git clone https://github.com/Aryan8538/Mood-Snap-Calender.git
-cd Mood-Snap-Calender/Mood-Snap</code>
-        </div>
-        
-        <h4>2. Install dependencies</h4>
-        <div class="code-block">
-          <code>pip install -r requirements.txt</code>
-        </div>
-        
-        <h4>3. Execute the Streamlit App</h4>
-        <div class="code-block">
-          <code>cd "happiness calander"
-streamlit run app.py</code>
-        </div>
-        
-        <p style="margin-top:20px; font-size:0.9rem; color:var(--text3);">
-          Note: Make sure your webcam is connected and you grant camera permissions to the local Streamlit tab when prompted!
-        </p>
-      </div>
-    </div>
-  </div>
+
 
   <!-- Main JavaScript File -->
   <script src="js/main.js"></script>
