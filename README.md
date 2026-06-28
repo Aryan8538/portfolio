@@ -2,7 +2,7 @@
 
 A premium, modern single-page portfolio website showcasing web development expertise, full-stack architectures, and AI/ML integrations. 
 
-🔗 **Live Website**: [portfolio-aryan8538.vercel.app](https://portfolio-9ci1z7yqf-aryan8538s-projects.vercel.app/)
+🔗 **Live Website**: [portfolio-aryan8538.vercel.app](https://portfolio-742i.vercel.app/)
 
 ---
 
