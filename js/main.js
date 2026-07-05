@@ -7,13 +7,18 @@ document.addEventListener('DOMContentLoaded', () => {
   progressIndicator.className = 'scroll-progress';
   document.body.appendChild(progressIndicator);
 
+  let progressTicking = false;
   window.addEventListener('scroll', () => {
-    const totalScroll = document.documentElement.scrollHeight - window.innerHeight;
-    if (totalScroll > 0) {
-      const percentage = (window.scrollY / totalScroll) * 100;
-      progressIndicator.style.width = percentage + '%';
-    }
-  });
+    if (progressTicking) return;
+    progressTicking = true;
+    requestAnimationFrame(() => {
+      const totalScroll = document.documentElement.scrollHeight - window.innerHeight;
+      if (totalScroll > 0) {
+        progressIndicator.style.width = (window.scrollY / totalScroll) * 100 + '%';
+      }
+      progressTicking = false;
+    });
+  }, { passive: true });
 
   /* ============================================================
      THEME TOGGLE (DARK / LIGHT)
@@ -44,11 +49,17 @@ document.addEventListener('DOMContentLoaded', () => {
   const navbar = document.getElementById('navbar');
   const backTop = document.getElementById('backTop');
 
+  let navTicking = false;
   window.addEventListener('scroll', () => {
-    const y = window.scrollY;
-    navbar.classList.toggle('scrolled', y > 20);
-    backTop.classList.toggle('show', y > 400);
-  });
+    if (navTicking) return;
+    navTicking = true;
+    requestAnimationFrame(() => {
+      const y = window.scrollY;
+      navbar.classList.toggle('scrolled', y > 20);
+      backTop.classList.toggle('show', y > 400);
+      navTicking = false;
+    });
+  }, { passive: true });
 
   backTop.addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -159,7 +170,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
       }
     });
-  }, sectionObserverObserverOptions = sectionObserverOptions);
+  }, sectionObserverOptions);
 
   sections.forEach(sec => sectionObserver.observe(sec));
 
