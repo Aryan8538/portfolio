@@ -29,9 +29,12 @@
 <body>
 
   <!-- Background Grids & Orbs -->
-  <div class="bg-grid"></div>
-  <div class="orb orb-1"></div>
-  <div class="orb orb-2"></div>
+  <div class="bg-grid parallax-layer"></div>
+  <div class="orb orb-1 parallax-layer"></div>
+  <div class="orb orb-2 parallax-layer"></div>
+
+  <!-- Cursor Glow (desktop, motion-safe) -->
+  <div class="cursor-glow" aria-hidden="true"></div>
 
   <!-- Fullscreen Mobile Navigation Menu -->
   <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile Navigation">
@@ -164,7 +167,7 @@
               <span class="interest-tag"><i class="fas fa-microchip"></i> IoT Systems</span>
             </div>
           </div>
-          <div class="about-cards reveal-right">
+          <div class="about-cards">
             <div class="about-card">
               <div class="about-card-icon"><i class="fas fa-graduation-cap"></i></div>
               <div class="about-card-content">
@@ -199,7 +202,7 @@
           <h2 class="section-title">Expertise & Technologies</h2>
           <p class="section-sub">A curated set of technologies I use to build robust and performant software.</p>
         </div>
-        <div class="skills-grid reveal">
+        <div class="skills-grid">
           <!-- Frontend -->
           <div class="skill-category">
             <div class="skill-cat-header">
@@ -298,7 +301,7 @@
         </div>
 
         <!-- Tech Icons Row -->
-        <div class="tech-icons-row reveal">
+        <div class="tech-icons-row">
           <div class="tech-icon-item" aria-label="React"><i class="fab fa-react"></i><span>React</span></div>
           <div class="tech-icon-item" aria-label="Python"><i class="fab fa-python"></i><span>Python</span></div>
           <div class="tech-icon-item" aria-label="JavaScript"><i class="fab fa-js"></i><span>JS</span></div>
@@ -623,5 +626,7 @@
 
   <!-- Main JavaScript File -->
   <script src="js/main.js"></script>
+  <!-- Premium Micro-Interactions -->
+  <script src="js/interactions.js" defer></script>
 </body>
 </html>
