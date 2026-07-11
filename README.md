@@ -28,19 +28,24 @@ A premium, modern single-page portfolio website showcasing web development exper
 ## 📂 Project Showcase
 
 ### 💹 1. FinSight AI – Student Financial Advisor
-A full-stack financial literacy web application for students. Features stock tracking, portfolio indicators, modular learning, and Groq-powered AI chatbot recommendations.
-- **Tech**: React.js, FastAPI, Groq API, Uvicorn, AI Chatbot
-- [FinSight-AI Repo](https://github.com/Aryan8538/FinSight-AI)
+A full-stack financial literacy web application for students. Features stock tracking, portfolio indicators, modular learning, and Groq & Gemini-powered AI chatbot recommendations.
+- **Tech**: React.js, Node.js, Express.js, MongoDB, Groq & Gemini APIs
+- [FinSight-AI Repo](https://github.com/Aryan8538/FinSight-AI) | [Live Demo](https://fin-sight-ai-black.vercel.app/)
 
-### 😊 2. Mood Snap – Emotion Tracker
-An AI daily emotion logger mapping webcam captures using PyTorch CNNs trained on the FER-2013 dataset. Includes interactive dashboard charts.
-- **Tech**: Python, PyTorch, Streamlit, OpenCV, Plotly
-- [Mood-Snap Repo](https://github.com/Aryan8538/Mood-Snap-Calender) | [Live Demo](https://mood-snap-calender.streamlit.app/)
+### 🧠 2. Cognitive Coach – AI Mock Interview Platform
+An AI-powered mock interview platform featuring WebRTC video recording, live audio visualization, real-time feedback, and automated speech transcription with Gemini-driven evaluation.
+- **Tech**: Next.js, FastAPI, Gemini API, SQLAlchemy, WebRTC
+- [Cognitive-Coach Repo](https://github.com/Aryan8538/Cognitive-Coach) | [Live Demo](https://cognitive-coach-one.vercel.app/)
 
-### 🧠 3. Cognitive Coach
-An AI-powered coaching web app designed to support reflective thinking and guided self-improvement.
-- **Tech**: TypeScript, Python, JavaScript, CSS, Vercel
-- [Cognitive-Coach Repo](https://github.com/Aryan8538/Cognitive-Coach)
+### 📥 3. GrowEasy – AI-Powered CRM CSV Importer
+An AI-driven CRM CSV importer built to map, normalize, and validate arbitrary CSV data into a strict 15-field CRM schema, utilizing parallel execution throttling to prevent rate-limiting and SSE for real-time progress.
+- **Tech**: Next.js, TypeScript, Express.js, Node.js, SSE (Server-Sent Events), Gemini & Groq APIs
+- [GrowEasy CSV Importer Repo](https://github.com/Aryan8538/groweasy-crm-csv-importer) | [Live Demo](https://groweasy-crm-csv-importer-silk.vercel.app/)
+
+### 😊 4. Mood Snap – AI Emotion Tracker
+A real-time facial emotion recognition system using a CNN trained on the FER-2013 dataset. Features a Streamlit and Plotly analytics dashboard and an optimized OpenCV frame processing pipeline.
+- **Tech**: Python, CNN, Streamlit, Plotly, OpenCV, FER-2013
+- [Mood-Snap Repo](https://github.com/Aryan8538/Mood-Snap-Calender) | [Live Demo](https://mood-snap-calender-9cffky5ybyhszcd84zcwjj.streamlit.app/)
 
 ---
 
